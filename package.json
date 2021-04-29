@@ -15,15 +15,21 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-react": "^7.13.13",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "enzyme": "^3.11.0",
+    "eslint": "^7.25.0",
+    "eslint-config-codingitwrong": "^0.1.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-react": "^7.23.2",
     "jest": "^26.6.3",
     "parcel-bundler": "^1.12.5"
   },
   "scripts": {
     "start": "parcel index.html",
-    "test:unit": "jest src/**/*.spec.js --watch"
+    "test:unit": "jest src/**/*.spec.js --watch",
+    "lint": "eslint src/**/*.js"
   },
   "jest": {
     "setupFilesAfterEnv": [
