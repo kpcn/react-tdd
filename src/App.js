@@ -1,7 +1,13 @@
 import React from "react";
+import { Col, Row } from "react-materialize";
+import RestaurantListPage from "./RestaurantListPage";
 
 const App = () => {
-  return <h1>TDD with React & Parcel</h1>;
+  return (
+    <div>
+      <RestaurantListPage />
+    </div>
+  );
 };
 
 export default App;
