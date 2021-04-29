@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  extends: ["codingitwrong"],
+  extends: ["codingitwrong", "plugin:cypress/recommended"],
   parser: "babel-eslint",
-  plugins: ["jest", "react"],
+  plugins: ["cypress", "jest", "react"],
   env: {
     browser: true,
     es6: true,
