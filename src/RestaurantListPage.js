@@ -1,7 +1,24 @@
 import React, { Component } from "react";
-import { Row, Col, Navbar, Icon, NavItem } from "react-materialize";
+import {
+  Row,
+  Col,
+  Navbar,
+  Icon,
+  Modal,
+  NavItem,
+  Button,
+} from "react-materialize";
+import NewRestaurantForm from "./NewRestaurantForm";
 
 export default class RestaurantListPage extends Component {
+  state = { restaurants: [] };
+
+  handleAddRestaurant = (name) => {
+    this.setState((state) => ({
+      restaurants: [name, ...state.restaurants],
+    }));
+  };
+
   render() {
     return (
       <Row>
@@ -16,6 +33,22 @@ export default class RestaurantListPage extends Component {
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
           ></Navbar>
+          <Row>
+            <Col>
+              <Modal
+                header="New Restaurnt"
+                trigger={
+                  <Row>
+                    <Button data-test="addRestaurantButton">
+                      Add Restaurant
+                    </Button>
+                  </Row>
+                }
+              >
+                <NewRestaurantForm onSave={this.handleAddRestaurant} />
+              </Modal>
+            </Col>
+          </Row>
         </Col>
       </Row>
     );
