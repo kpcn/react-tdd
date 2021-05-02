@@ -9,6 +9,7 @@ import {
   Button,
 } from "react-materialize";
 import NewRestaurantForm from "./NewRestaurantForm";
+import RestaurantList from "./RestaurantList";
 
 export default class RestaurantListPage extends Component {
   state = { restaurants: [] };
@@ -20,6 +21,7 @@ export default class RestaurantListPage extends Component {
   };
 
   render() {
+    const { restaurants } = this.state;
     return (
       <Row>
         <Col s={12} m={12} l={12} xl={12}>
@@ -48,6 +50,9 @@ export default class RestaurantListPage extends Component {
                 <NewRestaurantForm onSave={this.handleAddRestaurant} />
               </Modal>
             </Col>
+          </Row>
+          <Row>
+            <RestaurantList restaurants={restaurants} />
           </Row>
         </Col>
       </Row>
