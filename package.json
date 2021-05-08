@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "test:unit": "jest src/**/*.spec.js --watch",
+    "test:unit": "jest src/**/*.spec.js",
     "test:e2e": "cypress open",
     "lint": "eslint src/**/*.js"
   },
