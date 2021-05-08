@@ -13,6 +13,7 @@ export default class NewRestaurantForm extends Component {
   handleSave = () => {
     const { restaurantName } = this.state;
     this.props.onSave(restaurantName);
+    this.setState({ restaurantName: "" });
   };
 
   render() {
