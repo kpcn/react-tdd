@@ -4,10 +4,12 @@ import NewRestaurantForm from "../../src/NewRestaurantForm";
 
 describe("NewRestaurantForm", () => {
   describe("clicking the save button", () => {
-    it("calls the onSave handler", () => {
-      const saveHandler = jest.fn();
+    let saveHandler, wrapper;
 
-      const wrapper = mount(<NewRestaurantForm onSave={saveHandler} />);
+    beforeEach(() => {
+      saveHandler = jest.fn();
+
+      wrapper = mount(<NewRestaurantForm onSave={saveHandler} />);
 
       wrapper
         .find('input[data-test="newRestaurantName"]')
@@ -16,8 +18,17 @@ describe("NewRestaurantForm", () => {
       wrapper
         .find('button[data-test="saveNewRestaurantButton"]')
         .simulate("click");
+    });
 
+    it("calls the onSave handler", () => {
       expect(saveHandler).toHaveBeenCalledWith("Yummy Yummy");
+    });
+
+    it("clears the text field", () => {
+      expect(
+        // eslint-disable-next-line comma-dangle
+        wrapper.find('input[data-test="newRestaurantName"]').props().value
+      ).toEqual("");
     });
   });
 });
