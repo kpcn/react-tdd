@@ -17,6 +17,8 @@ export const NoRecord = () => (
 );
 
 export const Items = ({ restaurants }) =>
-  restaurants.map((name) => <CollectionItem key={name}>{name}</CollectionItem>);
+  restaurants.map((name, index) => (
+    <CollectionItem key={`${name}-${index}`}>{name}</CollectionItem>
+  ));
 
 export default RestaurantList;

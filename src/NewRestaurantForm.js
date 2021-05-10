@@ -1,44 +1,45 @@
 import React, { Component } from "react";
 import { Button, Row, TextInput } from "react-materialize";
+import { Formik } from "formik";
 
 export default class NewRestaurantForm extends Component {
-  state = {
-    restaurantName: "",
-  };
-
-  handleTextChange = (event) => {
-    this.setState({ restaurantName: event.target.value });
-  };
-
-  handleSave = () => {
-    const { restaurantName } = this.state;
+  handleSave = (values, { resetForm }) => {
+    const { restaurantName } = values;
     this.props.onSave(restaurantName);
-    this.setState({ restaurantName: "" });
+    resetForm();
   };
 
   render() {
-    const { restaurantName } = this.state;
     return (
       <Row>
-        <TextInput
-          s={12}
-          m={8}
-          l={10}
-          label="Restaurant Name"
-          value={restaurantName}
-          onChange={this.handleTextChange}
-          data-test="newRestaurantName"
-        />
-        <Button
-          modal="close"
-          s={12}
-          m={4}
-          l={2}
-          data-test="saveNewRestaurantButton"
-          onClick={this.handleSave}
+        <Formik
+          initialValues={{ restaurantName: "" }}
+          onSubmit={this.handleSave}
         >
-          Save
-        </Button>
+          {({ values, handleChange, handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <TextInput
+                s={12}
+                m={8}
+                l={10}
+                label="Restaurant Name"
+                id="restaurantName"
+                value={values.estaurantName}
+                onChange={handleChange}
+                data-test="newRestaurantName"
+              />
+              <Button
+                modal="close"
+                s={12}
+                m={4}
+                l={2}
+                data-test="saveNewRestaurantButton"
+              >
+                Save
+              </Button>
+            </form>
+          )}
+        </Formik>
       </Row>
     );
   }
